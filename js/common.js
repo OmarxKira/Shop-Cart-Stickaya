@@ -38,35 +38,37 @@ document.addEventListener("DOMContentLoaded", function(){
             }
             
             function updateCart(){
-                cartItems.innerHTML="";
-                cart.forEach((item)=>{
+                cartItems.innerHTML = "";
+                cart.forEach((item) => {
                     cartItems.innerHTML += `
-                    <div class="line"></div>
-                    <div class="box-parent" style="display: flex; justify-content: space-between; align-items: center; gap: 10px; height:auto;">
-                
-                      <div class="box position-relative" style="width: 80px; height: 80px; overflow: hidden;">
-                        <img src="${item.imageURL}" alt="" class="img-fluid" style="width: 100%; height: auto;">
-                      </div>
-             
-                      <div class="d-flex" style="flex-grow: 1; justify-content: space-between; align-items: center;">
-                    
-                        <div class="ps-3" style="flex-grow: 1;">
-                          <p style="font-size: 18px;" class="fw-semibold mb-0">${item.title}</p>
-                          <p style="font-size: 18px; color: red; margin-bottom: 0;">LE ${item.price}</p>
+                        <div class="line"></div>
+                        <div class="box-parent" style="display: flex; justify-content: space-between; align-items: center; gap: 10px; height:auto;">
+                            <div class="box position-relative" style="width: 80px; height: 80px; overflow: hidden;">
+                                <img src="${item.imageURL}" alt="" class="img-fluid" style="width: 100%; height: auto;">
+                            </div>
+                            <div class="d-flex" style="flex-grow: 1; justify-content: space-between; align-items: center;">
+                                <div class="ps-3" style="flex-grow: 1;">
+                                    <p style="font-size: 18px;" class="fw-semibold mb-0">${item.title}</p>
+                                    <p style="font-size: 18px; color: red; margin-bottom: 0;">LE ${item.price}</p>
+                                </div>
+                                <button class="btn remove-from-cart" data-id="${item.id}">
+                                    <i class="fa-solid fa-trash" style="color: #d62e3f; cursor: pointer;"></i>
+                                </button>
+                            </div>
                         </div>
-                        <button class="btn add-to-cart" onClick="RemoveFromCart(${item.id})">
-                        <i class="fa-solid fa-trash" style="color: #d62e3f; cursor: pointer;"></i>
-                        </button>
-                        </div>
-                        </div>
-                        
-                `;
-                
-                
-                    badge.style.display="block";
-                    badge.innerHTML=cart.length
-                  
-                })
+                    `;
+                });
+            
+                badge.style.display = "block";
+                badge.innerHTML = cart.length;
+            
+                const removeButtons = document.querySelectorAll('.remove-from-cart');
+                removeButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const itemId = parseInt(this.getAttribute('data-id'));
+                        RemoveFromCart(itemId);
+                    });
+                });
             }
          
            
