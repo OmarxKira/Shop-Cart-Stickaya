@@ -11,7 +11,7 @@ padding-left: 0;
 }
 
 .background-section {
-    background-image: url("images/logo/facebook-cover.png");
+    background-image: url("/images/logo/facebook-cover.png");
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -44,7 +44,7 @@ padding-left: 0;
 
 @media (max-width: 1110px) {
     .background-section {
-       background-image: url("images/logo/facebook-cover-smaller.png");
+       background-image: url("/images/logo/facebook-cover-smaller.png");
        background-size:cover;
        background-position: center;
        background-repeat: no-repeat;
